@@ -1,0 +1,12 @@
+Title: Cozy Company
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: broken_isle
+Context: day
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Traveler / Paimon
+Item: Phantasmal Conch / Sweet Flower
+Atmosphere: Warm, friendly, lighthearted companionship
+Description: A gentle, melodic tune with a cozy and reassuring rhythm, perfect for moments of rest during a long tropical expedition with friends.
+Tags: Golden Apple Archipelago, Warm, Melodic, Summer, Cozy

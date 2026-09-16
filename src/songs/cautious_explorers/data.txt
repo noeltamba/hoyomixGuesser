@@ -1,0 +1,12 @@
+Title: Cautious Explorers
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: minacious_isle
+Context: day
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Jean / Traveler
+Item: Phantasmal Conch / Dandelion Seed
+Atmosphere: Curious, gentle, low-stakes island mystery
+Description: A steady, light rhythm paired with cautious yet warm woodwinds that mimic the feeling of stepping carefully into unknown tropical ruins.
+Tags: Golden Apple Archipelago, Woodwind, Curious, Mild Tension, Summer

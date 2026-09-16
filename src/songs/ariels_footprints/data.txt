@@ -1,0 +1,12 @@
+Title: Ariel's Footprints
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle
+Context: day
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Klee / Barbara
+Item: Sea Ganoderma / Echoing Conch
+Atmosphere: Whimsical, lighthearted, sunny coastal adventure
+Description: Bright melodies and soft instrumentation that capture the magic of uncovering hidden paths along the sun-drenched shores of the archipelago.
+Tags: Golden Apple Archipelago, Summer, Exploration, Uplifting, Playful

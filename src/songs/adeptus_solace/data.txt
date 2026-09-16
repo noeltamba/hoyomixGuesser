@@ -1,0 +1,12 @@
+Title: Adeptus' Solace
+Game: genshin
+Region: liyue
+SubArea: liyue_harbor
+Context: night
+Album: Jade Moon Upon a Sea of Clouds (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Zhongli / Xiao
+Item: Glaze Lily / Noctilucous Jade
+Atmosphere: Serene, nostalgic, solitary nocturnal reflection
+Description: Traditional Chinese instruments blending seamlessly with Western orchestration to evoke the quiet, ancient wisdom of Liyue Harbor under the night sky.
+Tags: Liyue, Erhu, Night, Peaceful, Traditional

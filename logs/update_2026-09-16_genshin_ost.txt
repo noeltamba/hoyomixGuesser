@@ -1,0 +1,84 @@
+==================================================
+LOG UPDATE LAGU
+==================================================
+Tanggal : 16 September 2026
+Kategori: Genshin Impact OST
+Jumlah  : 31 Lagu
+Status  : Ditambahkan (Initial Import)
+==================================================
+
+DAFTAR LAGU:
+1. adeptus_solace
+2. ariels_footprints
+3. cautious_explorers
+4. comforting_quietude
+5. cozy_company
+
+==================================================
+Detail of the songs. (Wiki Genshin Impact)
+==================================================
+Title: Adeptus' Solace
+Game: genshin
+Region: liyue
+SubArea: liyue_harbor
+Context: night / ambient
+Album: Jade Moon Upon a Sea of Clouds (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Zhongli / Xiao
+Item: Glaze Lily / Noctilucous Jade
+Atmosphere: Serene, nostalgic, solitary nocturnal reflection
+Description: Traditional Chinese instruments blending seamlessly with Western orchestration to evoke the quiet, ancient wisdom of Liyue Harbor under the night sky.
+Tags: Liyue, Erhu, Night, Peaceful, Traditional
+------------------------------
+Title: Ariel's Footprints
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle / twinning_isle
+Context: day / ambient
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Klee / Barbara
+Item: Sea Ganoderma / Echoing Conch
+Atmosphere: Whimsical, lighthearted, sunny coastal adventure
+Description: Bright melodies and soft instrumentation that capture the magic of uncovering hidden paths along the sun-drenched shores of the archipelago.
+Tags: Golden Apple Archipelago, Summer, Exploration, Uplifting, Playful
+------------------------------
+Title: Cautious Explorers
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: minacious_isle / broken_isle
+Context: day / ambient
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Jean / Traveler
+Item: Phantasmal Conch / Dandelion Seed
+Atmosphere: Curious, gentle, low-stakes island mystery
+Description: A steady, light rhythm paired with cautious yet warm woodwinds that mimic the feeling of stepping carefully into unknown tropical ruins.
+Tags: Golden Apple Archipelago, Woodwind, Curious, Mild Tension, Summer
+------------------------------
+Title: Comforting Quietude
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle / twinning_isle
+Context: day / ambient
+Album: [The Shimmering Voyage (Disc 1)](https://genshin-impact.fandom.com/wiki/The_Shimmering_Voyage)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Barbara / Klee
+Item: Sea Ganoderma / Echoing Conch
+Atmosphere: Peaceful, relaxing, comforting summer stillness
+Description: Soft acoustic plucking paired with a calm tempo that beautifully evokes the warm, restorative silence of a sunny day by the ocean.
+Tags: Golden Apple Archipelago, Acoustic Guitar, Relaxing, Summer, Peaceful
+------------------------------
+Title: Cozy Company
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: broken_isle / minacious_isle
+Context: day / ambient
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Traveler / Paimon
+Item: Phantasmal Conch / Sweet Flower
+Atmosphere: Warm, friendly, lighthearted companionship
+Description: A gentle, melodic tune with a cozy and reassuring rhythm, perfect for moments of rest during a long tropical expedition with friends.
+Tags: Golden Apple Archipelago, Warm, Melodic, Summer, Cozy
+------------------------------

@@ -18,12 +18,19 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
 
   const title = dict['title'] || folderName;
   const gameId = (dict['game'] || 'genshin').toLowerCase() as GameId;
-  const album = dict['album'] || 'HOYO-MiX Album';
+  const album = (dict['album'] || 'HOYO-MiX Album').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim();
   const composer = dict['composer'] || 'HOYO-MiX';
   let regionId = (dict['region'] || 'mondstadt').toLowerCase().replace(/\s+/g, '_');
   if (regionId === 'gaa') regionId = 'golden_apple_archipelago';
   const subAreaId = (dict['subarea'] || dict['sub_area'] || '').toLowerCase().replace(/\s+/g, '_');
-  const timeContext = (dict['context'] || dict['time'] || 'day').toLowerCase() as 'day' | 'night' | 'battle' | 'indoor';
+  
+  const rawContext = (dict['context'] || dict['time'] || 'day').toLowerCase();
+  let timeContext: 'day' | 'night' | 'battle' | 'indoor' = 'day';
+  if (rawContext.includes('night')) timeContext = 'night';
+  else if (rawContext.includes('combat') || rawContext.includes('battle') || rawContext.includes('boss')) timeContext = 'battle';
+  else if (rawContext.includes('indoor') || rawContext.includes('tavern')) timeContext = 'indoor';
+  else timeContext = 'day';
+
   const description = dict['description'] || `Soundtrack from ${album}.`;
   const tags = dict['tags'] ? dict['tags'].split(',').map((t) => t.trim()) : [];
 
@@ -70,7 +77,7 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
 }
 
 // Automatically import data.txt files using Vite glob with ?raw query
-const rawTxtModules = import.meta.glob('../../public/songs/*/data.txt', {
+const rawTxtModules = import.meta.glob('../songs/*/data.txt', {
   query: '?raw',
   import: 'default',
   eager: true

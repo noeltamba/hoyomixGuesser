@@ -1,0 +1,12 @@
+Title: Comforting Quietude
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle
+Context: day
+Album: The Shimmering Voyage (Disc 1)
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Barbara / Klee
+Item: Sea Ganoderma / Echoing Conch
+Atmosphere: Peaceful, relaxing, comforting summer stillness
+Description: Soft acoustic plucking paired with a calm tempo that beautifully evokes the warm, restorative silence of a sunny day by the ocean.
+Tags: Golden Apple Archipelago, Acoustic Guitar, Relaxing, Summer, Peaceful
