@@ -75,7 +75,10 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
         durationRef.current = dur;
         if (playModeRef.current === 'middle' && dur > 0) {
           audio.currentTime = Math.floor(dur / 2);
+        } else {
+          audio.currentTime = 0;
         }
+        setCurrentTime(0);
       };
 
       // Enforce limit on native timeupdate
@@ -85,20 +88,22 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
         const rel = Math.max(0, cur - offset);
         setCurrentTime(rel);
 
-        const maxPos = offset + unlockedLimitRef.current;
-        if (cur >= maxPos || rel >= unlockedLimitRef.current) {
+        const limit = unlockedLimitRef.current;
+        const maxPos = offset + limit;
+        if (cur >= maxPos || rel >= limit) {
           audio.pause();
           audio.currentTime = maxPos;
-          setCurrentTime(unlockedLimitRef.current);
+          setCurrentTime(limit);
           setIsPlaying(false);
         }
       };
 
-      // Native play event (including keyboard media keys / OS controls)
+      // Native play event
       audio.onplay = () => {
         initAudioGraph();
         const offset = getStartOffset();
-        const maxPos = offset + unlockedLimitRef.current;
+        const limit = unlockedLimitRef.current;
+        const maxPos = offset + limit;
         if (audio.currentTime < offset || audio.currentTime >= maxPos) {
           audio.currentTime = offset;
           setCurrentTime(0);
@@ -114,7 +119,8 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
       // Clamp seeking beyond bounds
       audio.onseeking = () => {
         const offset = getStartOffset();
-        const maxPos = offset + unlockedLimitRef.current;
+        const limit = unlockedLimitRef.current;
+        const maxPos = offset + limit;
         if (audio.currentTime < offset) {
           audio.currentTime = offset;
         } else if (audio.currentTime > maxPos) {
@@ -127,44 +133,6 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
       };
 
       audioRef.current = audio;
-
-      // Handle OS / Hardware MediaSession actions to prevent bypass
-      if ('mediaSession' in navigator) {
-        try {
-          navigator.mediaSession.setActionHandler('play', () => {
-            const offset = getStartOffset();
-            const maxPos = offset + unlockedLimitRef.current;
-            if (audio.currentTime < offset || audio.currentTime >= maxPos) {
-              audio.currentTime = offset;
-              setCurrentTime(0);
-            }
-            audio.play().catch(console.error);
-          });
-          navigator.mediaSession.setActionHandler('pause', () => {
-            audio.pause();
-          });
-          navigator.mediaSession.setActionHandler('seekto', (details) => {
-            const offset = getStartOffset();
-            const maxPos = offset + unlockedLimitRef.current;
-            if (details.seekTime !== undefined) {
-              audio.currentTime = Math.min(Math.max(details.seekTime, offset), maxPos);
-            }
-          });
-          navigator.mediaSession.setActionHandler('seekforward', (details) => {
-            const offset = getStartOffset();
-            const maxPos = offset + unlockedLimitRef.current;
-            const skipOffset = details.seekOffset || 5;
-            audio.currentTime = Math.min(audio.currentTime + skipOffset, maxPos);
-          });
-          navigator.mediaSession.setActionHandler('seekbackward', (details) => {
-            const offset = getStartOffset();
-            const skipOffset = details.seekOffset || 5;
-            audio.currentTime = Math.max(audio.currentTime - skipOffset, offset);
-          });
-        } catch (e) {
-          console.warn('MediaSession handler warning:', e);
-        }
-      }
     }
     return audioRef.current;
   }, [initAudioGraph, getStartOffset]);
@@ -205,11 +173,12 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
         const rel = Math.max(0, cur - offset);
         setCurrentTime(rel);
 
-        const maxPos = offset + unlockedLimitRef.current;
-        if (cur >= maxPos || rel >= unlockedLimitRef.current) {
+        const limit = unlockedLimitRef.current;
+        const maxPos = offset + limit;
+        if (cur >= maxPos || rel >= limit) {
           audio.pause();
           audio.currentTime = maxPos;
-          setCurrentTime(unlockedLimitRef.current);
+          setCurrentTime(limit);
           setIsPlaying(false);
           return;
         }

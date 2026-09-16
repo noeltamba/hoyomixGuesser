@@ -44,18 +44,13 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
   }
 
   // Determine audio URL (Cloudflare R2 CDN base, explicit audio URL in data.txt, or local fallback)
-  const cdnBase = (import.meta.env.VITE_AUDIO_CDN_URL || '').replace(/\/+$/, '');
+  const defaultR2 = 'https://pub-03c826d15ae3488fbeb22b9ff3af9800.r2.dev';
+  const cdnBase = (import.meta.env.VITE_AUDIO_CDN_URL || defaultR2).replace(/\/+$/, '');
   let audioUrl = dict['audio'] || dict['audiourl'] || '';
   if (!audioUrl) {
-    if (cdnBase) {
-      audioUrl = `${cdnBase}/${folderName}.mp3`;
-    } else {
-      audioUrl = `/songs/${folderName}/audio.mp3`;
-    }
+    audioUrl = `${cdnBase}/${folderName}.mp3`;
   } else if (!audioUrl.startsWith('http://') && !audioUrl.startsWith('https://') && !audioUrl.startsWith('/')) {
-    if (cdnBase) {
-      audioUrl = `${cdnBase}/${audioUrl}`;
-    }
+    audioUrl = `${cdnBase}/${audioUrl}`;
   }
 
   return {
