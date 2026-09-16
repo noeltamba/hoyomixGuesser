@@ -22,15 +22,35 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+  overflow-y: auto;
+  background-color: var(--bg-primary);
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-main);
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 32px 20px;
+  padding: 32px 20px 48px;
+  position: relative;
+}
+
+/* Fixed viewport background - immune to window resize, scrolling, and content layout shifts */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 20%, #1a1e2b 0%, #0f1117 75%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Main Layout Container */
@@ -402,28 +422,27 @@ body {
   border-color: #3f2323;
 }
 
-/* Quiz Card & Stats Combined Header */
+/* Quiz Card - min-height covers the tallest stage (3 rows of region cards) so page never shrinks between stages */
 .quiz-main-card {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  min-height: 480px;
+  min-height: 570px;
   justify-content: flex-start;
   position: relative;
 }
 
 .feedback-slot-fixed {
-  min-height: 0;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
-}
-
-.feedback-slot-fixed:has(.feedback-banner) {
-  margin-bottom: 6px;
 }
 
 .quiz-top-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-subtle);
@@ -512,13 +531,14 @@ body {
   color: #111;
 }
 
-/* Centered Body & Grids - Fixed uniform height across all stages */
+/* Centered Body - min-height covers 3 rows of region cards (tallest stage) so smaller stages don't shrink page */
 .stage-body-centered {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  min-height: 250px;
+  min-height: 354px;
+  position: relative;
 }
 
 /* Region Cards Grid: Exactly 4 per row (2 rows of 4 = 8 total) */
@@ -676,17 +696,21 @@ body {
   text-align: center;
   gap: 6px;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
   height: 130px;
+  color: var(--text-main);
+  font-family: var(--font-body);
 }
 
 .context-card:hover:not(:disabled) {
   background: #232836;
+  border-color: #3b4255;
 }
 
 .context-header {
   font-weight: 700;
   font-size: 0.95rem;
+  color: var(--text-main);
 }
 
 .context-desc {

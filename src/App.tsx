@@ -9,7 +9,6 @@ import { ResultModal } from './components/Quiz/ResultModal';
 import { FeedbackBanner } from './components/Quiz/FeedbackBanner';
 import { useGameState } from './hooks/useGameState';
 import { useAudioEngine } from './hooks/useAudioEngine';
-import { Heart, Flame } from 'lucide-react';
 
 export const App: React.FC = () => {
   const {
@@ -17,8 +16,6 @@ export const App: React.FC = () => {
     setSelectedGame,
     currentTrack,
     stage,
-    hearts,
-    streak,
     segmentIndex,
     currentSegmentLimit,
     feedback,
@@ -102,19 +99,8 @@ export const App: React.FC = () => {
           <FeedbackBanner feedback={feedback} />
         </div>
 
-        {/* Top Info Bar: Lives & Streak united right above questions */}
+        {/* Top Info Bar: Stage Progress right above questions */}
         <div className="quiz-top-bar">
-          <div className="stats-badges">
-            <div className="stat-badge stat-hearts">
-              <Heart size={16} fill="currentColor" />
-              <span>{hearts} / 3</span>
-            </div>
-            <div className="stat-badge stat-streak">
-              <Flame size={16} fill="currentColor" />
-              <span>Streak: {streak}</span>
-            </div>
-          </div>
-
           <StageProgress currentStage={stage} />
         </div>
 

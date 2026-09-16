@@ -9,8 +9,6 @@ export function useGameState() {
   const [selectedGame, setSelectedGame] = useState<GameId>('genshin');
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [stage, setStage] = useState<StageId>(1);
-  const [hearts, setHearts] = useState(3);
-  const [streak, setStreak] = useState(0);
 
   // Segment index: 0 -> 3s, 1 -> 6s, 2 -> 10s, 3 -> 15s, 4 -> 30s
   const [segmentIndex, setSegmentIndex] = useState<number>(0);
@@ -85,22 +83,12 @@ export function useGameState() {
     setSelectedChoice(choiceId);
     setChoiceStatus('wrong');
 
-    const nextHearts = hearts - 1;
-    setHearts(nextHearts);
-    setStreak(0);
-
     // Auto-advance segment if available
     if (segmentIndex < SEGMENTS.length - 1) {
       setSegmentIndex((prev) => prev + 1);
     }
 
-    if (nextHearts <= 0) {
-      setIsGameOver(true);
-      setStage(5);
-      showFeedback('wrong', 'Game Over', `The track was "${currentTrack?.title}".`);
-    } else {
-      showFeedback('wrong', 'Incorrect', `Heart -1 (${nextHearts} left). Hint: ${expectedHint}`);
-    }
+    showFeedback('wrong', 'Incorrect', `Hint: ${expectedHint}`);
 
     // Reset shake state after animation ends
     setTimeout(() => {
@@ -127,7 +115,6 @@ export function useGameState() {
 
         if (nextStage === 5) {
           setIsVictory(true);
-          setStreak((prev) => prev + 1);
           confetti({
             particleCount: 80,
             spread: 60,
@@ -188,15 +175,11 @@ export function useGameState() {
   // Give up action
   const giveUp = () => {
     setIsGameOver(true);
-    setHearts(0);
-    setStreak(0);
     setStage(5);
     showFeedback('wrong', 'Given Up', `The track was "${currentTrack?.title}".`);
   };
 
   const restartGame = () => {
-    setHearts(3);
-    setStreak(0);
     pickNewTrack(selectedGame);
   };
 
@@ -205,8 +188,6 @@ export function useGameState() {
     setSelectedGame,
     currentTrack,
     stage,
-    hearts,
-    streak,
     segmentIndex,
     currentSegmentLimit,
     isMaxSegment,
