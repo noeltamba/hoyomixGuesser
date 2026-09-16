@@ -43,13 +43,28 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
     hints.push({ label: 'Atmosphere', value: dict['atmosphere'] || dict['mood'] });
   }
 
+  // Determine audio URL (Cloudflare R2 CDN base, explicit audio URL in data.txt, or local fallback)
+  const cdnBase = (import.meta.env.VITE_AUDIO_CDN_URL || '').replace(/\/+$/, '');
+  let audioUrl = dict['audio'] || dict['audiourl'] || '';
+  if (!audioUrl) {
+    if (cdnBase) {
+      audioUrl = `${cdnBase}/${folderName}.mp3`;
+    } else {
+      audioUrl = `/songs/${folderName}/audio.mp3`;
+    }
+  } else if (!audioUrl.startsWith('http://') && !audioUrl.startsWith('https://') && !audioUrl.startsWith('/')) {
+    if (cdnBase) {
+      audioUrl = `${cdnBase}/${audioUrl}`;
+    }
+  }
+
   return {
     id: `track_${folderName}`,
     title,
     gameId,
     album,
     composer,
-    audioUrl: `/songs/${folderName}/audio.mp3`,
+    audioUrl,
     regionId,
     subAreaId,
     timeContext,
