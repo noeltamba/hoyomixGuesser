@@ -46,6 +46,7 @@ export const GAMES_DATA: Record<GameId, GameInfo> = {
         subAreas: [
           { id: 'inazuma_city', name: 'Inazuma City & Tenshukaku' },
           { id: 'narukami_shrine', name: 'Grand Narukami Shrine' },
+          { id: 'ritou', name: 'Ritou' },
           { id: 'watatsumi_island', name: 'Watatsumi Island' },
           { id: 'seirai_island', name: 'Seirai Island' },
           { id: 'tsurumi_island', name: 'Tsurumi Island' },
@@ -112,11 +113,10 @@ export const GAMES_DATA: Record<GameId, GameInfo> = {
         subtitle: 'Version 1.6 & 2.8',
         logo: '/logo/Golden_Apple_Archipelago_Emblem_Night.webp',
         subAreas: [
-          { id: 'minacious_isle', name: 'Minacious Isle' },
-          { id: 'pudding_isle', name: 'Pudding Isle' },
-          { id: 'twinning_isle', name: 'Twinning Isle' },
-          { id: 'broken_isle', name: 'Broken Isle' },
-          { id: 'central_isle', name: 'Central Isle & Waverider' }
+          { id: 'minacious_isle', name: 'Minacious Isle', image: '/area/gaa/Golden_Apple_Archipelago_Minacious_Isle.webp' },
+          { id: 'pudding_isle', name: 'Pudding Isle', image: '/area/gaa/Golden_Apple_Archipelago_2.8_Pudding_Isle_(Mondstadt).webp' },
+          { id: 'twinning_isle', name: 'Twinning Isle', image: '/area/gaa/Golden_Apple_Archipelago_Twinning_Isle.webp' },
+          { id: 'broken_isle', name: 'Broken Isle', image: '/area/gaa/Golden_Apple_Archipelago_Broken_Isle_1.webp' }
         ]
       },
       {
