@@ -5,6 +5,8 @@ dist-ssr
 .env*.local
 *.mp3
 /songs/
+public/area/
+/area/
 
 
 !.vscode/extensions.json
