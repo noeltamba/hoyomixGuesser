@@ -1,0 +1,12 @@
+Title: Sunshine Beach
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle
+Context: night
+Album: The Shimmering Voyage
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Klee / Jean / Barbara
+Item: Echoing Conch / Dodo-King's Harpastum
+Atmosphere: Relaxing, gentle tropical acoustic beach vibe
+Description: Intimate nylon guitar track evoking the calm, breezy shores of the summer islands at night.
+Tags: Golden Apple Archipelago, Acoustic Guitar, Chill, Summer, Island

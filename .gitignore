@@ -4,7 +4,8 @@ dist-ssr
 .env
 .env*.local
 *.mp3
-songs/
+/songs/
+
 
 !.vscode/extensions.json
 .idea
