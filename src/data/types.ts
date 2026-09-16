@@ -3,6 +3,7 @@ export type GameId = 'genshin' | 'hsr' | 'zzz';
 export interface SubArea {
   id: string;
   name: string;
+  image?: string;
 }
 
 export interface Region {

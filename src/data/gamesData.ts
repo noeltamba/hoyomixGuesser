@@ -19,11 +19,11 @@ export const GAMES_DATA: Record<GameId, GameInfo> = {
         name: 'Mondstadt',
         logo: '/logo/Mondstadt_Emblem_Night.webp',
         subAreas: [
-          { id: 'city_of_mondstadt', name: 'City of Mondstadt' },
-          { id: 'dawn_winery', name: 'Dawn Winery' },
-          { id: 'springvale', name: 'Springvale & Windrise' },
-          { id: 'dragonspine', name: 'Dragonspine' },
-          { id: 'stormterror_lair', name: "Stormterror's Lair" }
+          { id: 'city_of_mondstadt', name: 'City of Mondstadt', image: '/area/mondstat/city_of_mondstadt.webp' },
+          { id: 'dawn_winery', name: 'Dawn Winery', image: '/area/mondstat/dawn_winery.webp' },
+          { id: 'springvale', name: 'Springvale & Windrise', image: '/area/mondstat/Springvale.webp' },
+          { id: 'dragonspine', name: 'Dragonspine', image: '/area/mondstat/Dragonspine.webp' },
+          { id: 'stormterror_lair', name: "Stormterror's Lair", image: "/area/mondstat/Stormterror's_Lair.webp" }
         ]
       },
       {
