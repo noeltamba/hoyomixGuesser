@@ -1,8 +1,11 @@
 node_modules
 dist
 dist-ssr
-*.local
-.vscode/*
+.env
+.env*.local
+*.mp3
+songs/
+
 !.vscode/extensions.json
 .idea
 .DS_Store
