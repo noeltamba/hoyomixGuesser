@@ -3,10 +3,10 @@ Game: genshin
 Region: mondstadt
 SubArea: dragonspine
 Context: day
-Album: Vortex of Legends (Dragonspine OST)
-Composer: Yu-Peng Chen / HOYO-MiX
-Character: Albedo & Durin
-Item: Frostbearing Tree / Scarlet Quartz
-Atmosphere: Freezing, melancholic, ancient snowfield
-Description: Emotional and melancholic string melody accompanying your journey across the freezing snowfields of Dragonspine.
-Tags: Dragonspine, Snow, Emotional, Strings, Cello
+Album: Vortex of Legends
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Albedo / Eula
+Item: Rime-Worn Fragment / Frostbearing Tree
+Atmosphere: Cold, mysterious, wandering acoustic winter
+Description: Shimmering acoustic guitar and delicate piano notes capturing solitary steps across the biting snow mountain.
+Tags: Dragonspine, Winter, Acoustic Guitar, Piano, Exploration

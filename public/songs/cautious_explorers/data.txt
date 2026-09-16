@@ -1,0 +1,12 @@
+Title: Cautious Explorers
+Game: genshin
+Region: liyue
+SubArea: chasm
+Context: day
+Album: Millelith's Watch
+Composer: HOYO-MiX
+Character: Yelan / Zhiqiong
+Item: Lumenstone Adjuvant / Lumenspar
+Atmosphere: Tense, ambient, cautious, subterranean
+Description: Suspenseful acoustic and percussive textures underscoring dangerous explorations deep within The Chasm.
+Tags: The Chasm, Underground, Suspense, Ambient, Exploration

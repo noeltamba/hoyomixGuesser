@@ -1,0 +1,12 @@
+Title: Journey into Sweet Dreams
+Game: genshin
+Region: sumeru
+SubArea: vanarana
+Context: day
+Album: Forest of Jnana and Vidya
+Composer: HOYO-MiX
+Character: Arama / Aranara
+Item: Viparyas / Vintage Lyre
+Atmosphere: Whimsical, fairytale-like, playful innocence
+Description: Enchanting music box and acoustic textures bringing to life the whimsical dream home of the forest Aranara.
+Tags: Sumeru, Vanarana, Aranara, Whimsical, Dreamy

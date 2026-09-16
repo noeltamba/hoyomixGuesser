@@ -1,0 +1,12 @@
+Title: Everlasting Devotion
+Game: genshin
+Region: inazuma
+SubArea: narukami_shrine
+Context: night
+Album: Islands of the Lost and Forgotten
+Composer: Sachiko Miyano / Yu-Peng Chen (HOYO-MiX)
+Character: Yae Miko / Raiden Shogun
+Item: Sakura Bloom / Sacred Sakura
+Atmosphere: Mystical, reverent, solemn traditional Japanese
+Description: Meditative traditional instrumentation reflecting spiritual eternity around the sacred shrine on Mt. Yougou.
+Tags: Inazuma, Shrine, Japanese Traditional, Shinobue, Koto

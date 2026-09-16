@@ -1,0 +1,12 @@
+Title: Old Tales Preserved
+Game: genshin
+Region: liyue
+SubArea: liyue_harbor
+Context: indoor
+Album: Jade Moon Upon a Sea of Clouds
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Xingqiu / Chongyun
+Item: Custom of Liyue / Rex Incognito
+Atmosphere: Scholarly, contemplative, tranquil Chinese classical
+Description: Elegant Dizi and Guzheng pairing depicting the quiet joy of reading ancient historical manuscripts.
+Tags: Liyue, Traditional, Reading, Scholarly, Peaceful

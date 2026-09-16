@@ -1,0 +1,12 @@
+Title: Vast and Blue
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: pudding_isle
+Context: day
+Album: The Shimmering Voyage
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Venti / Klee
+Item: Wind Glider / Sea Ganoderma
+Atmosphere: Expansive, soaring, sunny, carefree
+Description: Uplifting strings and bright acoustic patterns capturing panoramic views of the wide turquoise ocean from above.
+Tags: Golden Apple Archipelago, Ocean, Gliding, Bright, Freedom

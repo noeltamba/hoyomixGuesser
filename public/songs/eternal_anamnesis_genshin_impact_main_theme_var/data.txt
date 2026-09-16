@@ -1,0 +1,12 @@
+Title: Eternal Anamnesis (Main Theme Var.)
+Game: genshin
+Region: mondstadt
+SubArea: stormterror_lair
+Context: battle
+Album: City of Winds and Idfylls
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Venti / Dvalin
+Item: Dvalin's Plume / Anemo Sigil
+Atmosphere: Melancholic, emotional, climactic orchestral
+Description: Grand and sorrowful variation of the iconic Genshin Impact main theme telling the tragic memory of the dragon.
+Tags: Mondstadt, Boss Theme, Main Theme, Orchestral, Dramatic

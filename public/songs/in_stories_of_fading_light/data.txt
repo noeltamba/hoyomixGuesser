@@ -1,0 +1,12 @@
+Title: In Stories of Fading Light
+Game: genshin
+Region: liyue
+SubArea: chasm
+Context: day
+Album: Millelith's Watch
+Composer: HOYO-MiX
+Character: Dainsleif / Traveler
+Item: Lumenstone Adjuvant / Abyssal Inscription
+Atmosphere: Desolate, mysterious, forgotten ruins vibe
+Description: Dark, echoing ambient chords capturing long-buried secrets and fading remnants of lost antiquity.
+Tags: The Chasm, Underground, Dark Ambient, Lore, Ruins

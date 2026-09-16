@@ -1,0 +1,12 @@
+Title: Once-Colored Memories
+Game: genshin
+Region: liyue
+SubArea: jueyun_karst
+Context: night
+Album: Jade Moon Upon a Sea of Clouds
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Zhongli / Guizhong
+Item: Archaic Stone / Glaze Lily
+Atmosphere: Nostalgic, sorrowful, fading remembrance
+Description: Tender, wistful string melodies reminiscing on the lost prosperity and ancient friends of Guili Assembly.
+Tags: Liyue, Guili Plains, Nostalgia, Emotional, Guzheng

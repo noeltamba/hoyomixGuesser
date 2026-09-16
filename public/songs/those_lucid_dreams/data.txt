@@ -1,12 +1,12 @@
 Title: Those Lucid Dreams
 Game: genshin
 Region: sumeru
-SubArea: sumeru_city
-Context: night
-Album: Forest of Jnana and Vidya (Sumeru OST)
-Composer: Yu-Peng Chen / HOYO-MiX
-Character: Nahida / Lesser Lord Kusanali
-Item: Akasha Terminal / Grand Bazaar
-Atmosphere: Serene city night, tranquil sitar, scholarly wisdom
-Description: Serene and calming nighttime sitar melody in Sumeru City beneath the branches of the Divine Tree.
-Tags: Sumeru, Night, Sitar, Peaceful, Sumeru City
+SubArea: apam_woods
+Context: day
+Album: Forest of Jnana and Vidya
+Composer: HOYO-MiX
+Character: Nahida / Aranara
+Item: Kalpalata Lotus / Dream Sakura
+Atmosphere: Mystical, sparkling, serene forest wonder
+Description: Luminous glockenspiel, soft harp, and strings rendering the shimmering beauty of sacred rainforest visions.
+Tags: Sumeru, Forest, Mystical, Harp, Dreamy

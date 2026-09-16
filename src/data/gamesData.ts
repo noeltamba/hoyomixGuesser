@@ -60,8 +60,18 @@ export const GAMES_DATA: Record<GameId, GameInfo> = {
           { id: 'sumeru_city', name: 'Sumeru City & Akademiya' },
           { id: 'port_ormos', name: 'Port Ormos' },
           { id: 'apam_woods', name: 'Apam Woods & Avidya' },
+          { id: 'vanarana', name: 'Vanarana' },
           { id: 'desert_of_hadramaveth', name: 'Hadramaveth Desert' },
           { id: 'orchard_of_pairidaeza', name: 'Eternal Oasis' }
+        ]
+      },
+      {
+        id: 'serenitea_pot',
+        name: 'Serenitea Pot',
+        subtitle: 'Realm Inside',
+        logo: '/logo/Simulanka_Emblem_Night.webp',
+        subAreas: [
+          { id: 'serenitea_pot_mansion', name: 'Adeptal Mansion & Grounds' }
         ]
       },
       {

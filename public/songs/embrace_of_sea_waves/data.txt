@@ -1,0 +1,12 @@
+Title: Embrace of Sea Waves
+Game: genshin
+Region: inazuma
+SubArea: watatsumi_island
+Context: day
+Album: Islands of the Lost and Forgotten
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Sangonomiya Kokomi / Gorou
+Item: Sango Pearl / Watatsumi Coral
+Atmosphere: Elegant, flowing, graceful oceanic beauty
+Description: Flowing woodwinds and sweeping strings mirroring the rhythmic, peaceful oceanic tides of Watatsumi Island.
+Tags: Inazuma, Watatsumi Island, Ocean, Melodic, Orchestral

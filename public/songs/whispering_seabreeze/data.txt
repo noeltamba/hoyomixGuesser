@@ -1,0 +1,12 @@
+Title: Whispering Seabreeze
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: minacious_isle
+Context: day
+Album: The Shimmering Voyage
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Jean / Barbara
+Item: Sea Ganoderma / Echoing Conch
+Atmosphere: Refreshing, breezy, calm coastal daydream
+Description: Soothing acoustic guitar and delicate percussion capturing the gentle whisper of ocean breezes over white sand.
+Tags: Golden Apple Archipelago, Acoustic Guitar, Breezy, Relaxing, Summer

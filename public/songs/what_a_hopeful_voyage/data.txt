@@ -1,0 +1,12 @@
+Title: What a Hopeful Voyage
+Game: genshin
+Region: golden_apple_archipelago
+SubArea: central_isle
+Context: day
+Album: The Shimmering Voyage
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Beidou / Kazuha
+Item: Waverider / Harpastum Bombs
+Atmosphere: Adventurous, cheerful, spirited nautical voyage
+Description: Energetic maritime acoustic strumming radiating optimism and excitement during midsummer island voyages.
+Tags: Golden Apple Archipelago, Waverider, Adventure, Summer, Cheerful

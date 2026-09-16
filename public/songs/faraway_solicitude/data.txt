@@ -1,0 +1,12 @@
+Title: Faraway Solicitude
+Game: genshin
+Region: liyue
+SubArea: jueyun_karst
+Context: night
+Album: Jade Moon Upon a Sea of Clouds
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Cloud Retainer / Shenhe
+Item: Qingxin / Mist Flower Corolla
+Atmosphere: Solitary, lofty, misty Chinese ambient
+Description: Sparse, resonant Guzheng and Dizi notes echoing through the misty, sacred mountain peaks of the Adepti.
+Tags: Liyue, Jueyun Karst, Adepti, Guzheng, Ambient

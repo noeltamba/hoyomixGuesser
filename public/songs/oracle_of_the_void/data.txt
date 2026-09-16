@@ -1,0 +1,12 @@
+Title: Oracle of the Void
+Game: genshin
+Region: liyue
+SubArea: chasm
+Context: indoor
+Album: Millelith's Watch
+Composer: HOYO-MiX
+Character: Dainsleif / Halfdan
+Item: Lumenstone Adjuvant / Abyssal Relic
+Atmosphere: Eerie, cavernous, ominous cosmic emptiness
+Description: Low, resonant drones and distorted textures highlighting the inverted architectural ruins and cosmic abyss.
+Tags: The Chasm, Khaenri'ah, Eerie, Dark, Ambient

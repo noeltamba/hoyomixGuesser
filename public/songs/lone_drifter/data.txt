@@ -1,0 +1,12 @@
+Title: Lone Drifter
+Game: genshin
+Region: inazuma
+SubArea: yashiori_kannazuka
+Context: day
+Album: Islands of the Lost and Forgotten
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Kaedehara Kazuha
+Item: Sea Ganoderma / Broken Blade
+Atmosphere: Poetic, wandering, melancholic breeze
+Description: Wandering Shakuhachi and acoustic strumming embodying a solitary ronin traveling along rocky shores.
+Tags: Inazuma, Kazuha, Wandering, Shakuhachi, Solitary

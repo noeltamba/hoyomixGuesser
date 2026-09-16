@@ -1,0 +1,12 @@
+Title: Cozy Company
+Game: genshin
+Region: serenitea_pot
+SubArea: serenitea_pot_mansion
+Context: indoor
+Album: The Shimmering Voyage
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Tubby / Chubby
+Item: Realm Currency / Adeptal Mirror
+Atmosphere: Warm, cheerful, cozy, domestic
+Description: Lighthearted plucked strings and woodwinds creating a welcoming home atmosphere inside the Serenitea Pot mansion.
+Tags: Serenitea Pot, Housing, Whimsical, Acoustic, Cozy

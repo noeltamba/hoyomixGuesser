@@ -1,0 +1,12 @@
+Title: Moonlight in Mondstadt
+Game: genshin
+Region: mondstadt
+SubArea: city_of_mondstadt
+Context: night
+Album: City of Winds and Idfylls
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Lisa / Diluc
+Item: Small Lamp Grass / Dandelion Wine
+Atmosphere: Romantic, calm, serene European night
+Description: Gentle piano chords and soft strings wrapping the quiet cobblestone alleys of Mondstadt in moonlight.
+Tags: Mondstadt, Night, Piano, Strings, Peaceful

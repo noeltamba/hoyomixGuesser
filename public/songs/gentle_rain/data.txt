@@ -1,0 +1,12 @@
+Title: Gentle Rain
+Game: genshin
+Region: liyue
+SubArea: liyue_harbor
+Context: day
+Album: Jade Moon Upon a Sea of Clouds
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Zhongli / Keqing
+Item: Silk Flower / Glaze Lily
+Atmosphere: Poetic, tranquil, soothing raindrops
+Description: Elegant Erhu and piano blend depicting delicate rainfall wetting the stone pavilions of Liyue Harbor.
+Tags: Liyue, Rain, Piano, Erhu, Peaceful
