@@ -95,11 +95,13 @@ export const App: React.FC = () => {
         getFrequencyData={getFrequencyData}
       />
 
-      {/* Feedback Banner for Mistakes */}
-      <FeedbackBanner feedback={feedback} />
-
       {/* Main Quiz Card */}
       <main className="glass-card quiz-main-card">
+        {/* Dedicated Feedback Slot so card doesn't jump when error appears */}
+        <div className="feedback-slot-fixed">
+          <FeedbackBanner feedback={feedback} />
+        </div>
+
         {/* Top Info Bar: Lives & Streak united right above questions */}
         <div className="quiz-top-bar">
           <div className="stats-badges">

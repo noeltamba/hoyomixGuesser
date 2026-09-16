@@ -406,9 +406,19 @@ body {
 .quiz-main-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 410px;
+  gap: 14px;
+  min-height: 480px;
   justify-content: flex-start;
+  position: relative;
+}
+
+.feedback-slot-fixed {
+  min-height: 0;
+  transition: all 0.2s ease;
+}
+
+.feedback-slot-fixed:has(.feedback-banner) {
+  margin-bottom: 6px;
 }
 
 .quiz-top-bar {
