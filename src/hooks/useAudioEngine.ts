@@ -174,6 +174,9 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
     audio.pause();
     setIsPlaying(false);
     setCurrentTime(0);
+    setDuration(0);
+    durationRef.current = 0;
+    audio.currentTime = 0;
     audio.src = url;
     audio.load();
   }, [getOrCreateAudio]);

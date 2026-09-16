@@ -45,15 +45,26 @@ export const App: React.FC = () => {
     togglePlay,
     replay,
     continuePlayFromCurrent,
+    stop,
     getFrequencyData
   } = useAudioEngine(currentSegmentLimit, playMode);
 
-  // When track changes, load audio
+  // When track changes, load audio and reset player
   useEffect(() => {
     if (currentTrack) {
       loadTrack(currentTrack.audioUrl);
     }
   }, [currentTrack, loadTrack]);
+
+  const handleNextTrack = () => {
+    stop();
+    pickNewTrack(selectedGame);
+  };
+
+  const handleRestartGame = () => {
+    stop();
+    restartGame();
+  };
 
   const handleSkipSegment = () => {
     const canSkip = skipOrAdvanceSegment();
@@ -161,8 +172,8 @@ export const App: React.FC = () => {
         <ResultModal
           track={currentTrack}
           isVictory={isVictory}
-          onNextTrack={() => pickNewTrack(selectedGame)}
-          onRestartGame={restartGame}
+          onNextTrack={handleNextTrack}
+          onRestartGame={handleRestartGame}
         />
       )}
     </div>
