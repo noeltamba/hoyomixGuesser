@@ -1,0 +1,12 @@
+Title: Her Wishes
+Game: genshin
+Region: sumeru
+SubArea: orchard_of_pairidaeza
+Context: day
+Album: The Unfathomable Sand Dunes (Sumeru Desert OST)
+Composer: HOYO-MiX
+Character: Goddess of Flowers (Nabu Malikata) & King Deshret
+Item: Eternal Oasis Chairs / Padisarahs
+Atmosphere: Timeless, sacred, divine sanctuary in the desert
+Description: Sacred and magical melody playing in the Eternal Oasis (Orchard of Pairidaeza), the eternal resting place of the Goddess of Flowers.
+Tags: Sumeru, Desert, Eternal Oasis, Goddess of Flowers, Mystic
