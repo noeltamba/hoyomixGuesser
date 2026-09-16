@@ -561,72 +561,79 @@ body {
   border: 1px solid rgba(224, 169, 109, 0.25);
 }
 
-/* Sub-Area Grid Centered */
-.subarea-grid {
+/* Sub-Area Grid Centered with Rich Thumbnails (Exactly 4 Options Grid) */
+.subarea-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   width: 100%;
   max-width: 860px;
-  justify-content: center;
 }
 
-.subarea-btn {
+.subarea-card {
   background: #1a1e29;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px 16px;
-  color: var(--text-main);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  text-align: center;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  overflow: hidden;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
   position: relative;
+  overflow: hidden;
+  min-height: 120px;
 }
 
-.subarea-btn.has-thumbnail {
-  padding: 0 0 12px 0;
+.subarea-card:hover:not(:disabled) {
+  background: #232836;
+  border-color: #3b4255;
+  transform: translateY(-2px);
 }
 
-.subarea-thumbnail-wrap {
+.subarea-thumbnail-box {
   width: 100%;
-  height: 110px;
+  height: 80px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
   background: #10121a;
-  border-bottom: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .subarea-thumbnail-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
-.subarea-btn:hover .subarea-thumbnail-img {
+.subarea-card:hover .subarea-thumbnail-img {
   transform: scale(1.06);
 }
 
-.subarea-name {
-  padding: 0 8px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text-main);
+.subarea-thumbnail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 12, 18, 0.7) 100%);
 }
 
-.subarea-btn:hover:not(:disabled) {
-  background: #232836;
-  border-color: #3b4255;
-  transform: translateY(-2px);
+.subarea-card-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.25;
+  padding: 2px 4px;
+}
+
+@media (max-width: 720px) {
+  .cards-grid.four-options-grid,
+  .subarea-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Time Context Grid Centered */

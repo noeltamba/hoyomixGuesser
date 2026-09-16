@@ -132,6 +132,7 @@ export const App: React.FC = () => {
           {stage === 1 && (
             <StageRegion
               gameId={selectedGame}
+              targetRegionId={currentTrack?.regionId}
               selectedChoice={selectedChoice}
               choiceStatus={choiceStatus}
               onSelectRegion={guessRegion}
@@ -142,6 +143,7 @@ export const App: React.FC = () => {
             <StageSubArea
               gameId={selectedGame}
               regionId={currentTrack.regionId}
+              targetSubAreaId={currentTrack.subAreaId}
               selectedChoice={selectedChoice}
               choiceStatus={choiceStatus}
               onSelectSubArea={guessSubArea}
