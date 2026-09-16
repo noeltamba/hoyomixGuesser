@@ -65,15 +65,7 @@ export const GAMES_DATA: Record<GameId, GameInfo> = {
           { id: 'orchard_of_pairidaeza', name: 'Eternal Oasis' }
         ]
       },
-      {
-        id: 'serenitea_pot',
-        name: 'Serenitea Pot',
-        subtitle: 'Realm Inside',
-        logo: '/logo/Simulanka_Emblem_Night.webp',
-        subAreas: [
-          { id: 'serenitea_pot_mansion', name: 'Adeptal Mansion & Grounds' }
-        ]
-      },
+
       {
         id: 'fontaine',
         name: 'Fontaine',

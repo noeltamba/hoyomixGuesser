@@ -1,7 +1,7 @@
 Title: Cozy Company
 Game: genshin
-Region: serenitea_pot
-SubArea: serenitea_pot_mansion
+Region: golden_apple_archipelago
+SubArea: pudding_isle
 Context: indoor
 Album: The Shimmering Voyage
 Composer: Yu-Peng Chen (HOYO-MiX)
