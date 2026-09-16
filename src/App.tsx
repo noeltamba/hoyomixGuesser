@@ -132,7 +132,6 @@ export const App: React.FC = () => {
           {stage === 1 && (
             <StageRegion
               gameId={selectedGame}
-              targetRegionId={currentTrack?.regionId}
               selectedChoice={selectedChoice}
               choiceStatus={choiceStatus}
               onSelectRegion={guessRegion}
