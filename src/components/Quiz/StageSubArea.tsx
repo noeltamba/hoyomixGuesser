@@ -11,6 +11,18 @@ interface StageSubAreaProps {
   onSelectSubArea: (subAreaId: string) => void;
 }
 
+const defaultR2 = 'https://pub-03c826d15ae3488fbeb22b9ff3af9800.r2.dev';
+const cdnBase = (import.meta.env.VITE_AUDIO_CDN_URL || defaultR2).replace(/\/+$/, '');
+
+function getImageUrl(imagePath?: string): string | undefined {
+  if (!imagePath) return undefined;
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) return imagePath;
+  if (imagePath.startsWith('/area/')) {
+    return `${cdnBase}${imagePath}`;
+  }
+  return imagePath;
+}
+
 export const StageSubArea: React.FC<StageSubAreaProps> = ({
   gameId,
   regionId,
@@ -46,6 +58,8 @@ export const StageSubArea: React.FC<StageSubAreaProps> = ({
           if (choiceStatus === 'wrong') choiceClass = 'choice-wrong-shake';
         }
 
+        const resolvedSrc = getImageUrl(sub.image);
+
         return (
           <button
             key={sub.id}
@@ -53,13 +67,19 @@ export const StageSubArea: React.FC<StageSubAreaProps> = ({
             onClick={() => onSelectSubArea(sub.id)}
             disabled={choiceStatus !== 'idle'}
           >
-            {sub.image && (
+            {resolvedSrc && (
               <div className="subarea-thumbnail-box">
                 <img
-                  src={sub.image}
+                  src={resolvedSrc}
                   alt={sub.name}
                   className="subarea-thumbnail-img"
                   loading="lazy"
+                  onError={(e) => {
+                    // Fallback to local path if CDN fails or vice versa
+                    if (sub.image && e.currentTarget.src !== sub.image) {
+                      e.currentTarget.src = sub.image;
+                    }
+                  }}
                 />
                 <div className="subarea-thumbnail-overlay" />
               </div>
