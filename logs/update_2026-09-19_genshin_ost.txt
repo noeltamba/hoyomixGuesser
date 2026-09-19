@@ -1,0 +1,28 @@
+==================================================
+LOG UPDATE LAGU
+==================================================
+Tanggal : 19 September 2026
+Kategori: Genshin Impact OST
+Jumlah  : 1 Lagu
+Status  : Ditambahkan (Cloudflare R2 Sync)
+==================================================
+
+DAFTAR LAGU:
+1. ad_oblivione
+
+==================================================
+Detail of the songs. (Wiki Genshin Impact)
+==================================================
+Title: Ad Oblivione
+Game: genshin
+Region: mondstadt
+SubArea: dragonspine
+Context: night
+Album: Vortex of Legends
+Composer: Yu-Peng Chen (HOYO-MiX)
+Character: Traveler / Eula / Albedo
+Item: Starsilver / Crimson Agate
+Atmosphere: Desolate, hauntingly beautiful, frozen mystery
+Description: A melancholic vocal melody by Zach Huang backed by chilling orchestration that captures the desolate beauty and forgotten history of a frozen peak at night.
+Tags: Dragonspine, Vocal, Melancholic, Night, Snow, Mystery
+------------------------------
