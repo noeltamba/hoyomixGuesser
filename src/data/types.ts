@@ -46,6 +46,7 @@ export interface Track {
   description: string;
   tags: string[];
   hints?: TrackHint[];
+  coverImage?: string;
 }
 
 export type StageId = 1 | 2 | 3 | 4 | 5;

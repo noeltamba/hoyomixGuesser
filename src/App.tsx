@@ -20,6 +20,9 @@ export const App: React.FC = () => {
     currentSegmentLimit,
     feedback,
     isVictory,
+    endStatus,
+    correctCount,
+    guessedSec,
     selectedChoice,
     choiceStatus,
     isTransitioning,
@@ -40,7 +43,6 @@ export const App: React.FC = () => {
     currentTime,
     loadTrack,
     togglePlay,
-    replay,
     continuePlayFromCurrent,
     stop,
     getFrequencyData
@@ -86,7 +88,6 @@ export const App: React.FC = () => {
         playMode={playMode}
         onChangePlayMode={setPlayMode}
         onTogglePlay={togglePlay}
-        onReplay={replay}
         onSkipSegment={handleSkipSegment}
         onGiveUp={giveUp}
         getFrequencyData={getFrequencyData}
@@ -161,6 +162,9 @@ export const App: React.FC = () => {
         <ResultModal
           track={currentTrack}
           isVictory={isVictory}
+          endStatus={endStatus}
+          correctCount={correctCount}
+          guessedSec={guessedSec}
           onNextTrack={handleNextTrack}
           onRestartGame={handleRestartGame}
         />

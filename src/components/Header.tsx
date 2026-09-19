@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="header-wrapper">
       <div>
-        <h1 className="brand-title">HOYO-MIX GUESSER</h1>
+        <h1 className="brand-title">HoYo-MiX Guesser</h1>
         <p className="brand-subtitle">OST Guessing Game</p>
       </div>
 

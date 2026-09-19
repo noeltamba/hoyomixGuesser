@@ -2,13 +2,18 @@ import { useState, useCallback, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { GameId, StageId, Track, FeedbackState } from '../data/types';
 import { TRACKS } from '../data/tracks';
+import { playSoundEffect } from '../utils/soundEffects';
 
 export const SEGMENTS = [3, 6, 10, 15, 30] as const;
+
+export type EndStatus = 'guessed' | 'give_up' | 'didnt_guessed';
 
 export function useGameState() {
   const [selectedGame, setSelectedGame] = useState<GameId>('genshin');
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [stage, setStage] = useState<StageId>(1);
+  const [solvedStages, setSolvedStages] = useState<number>(0);
+  const [guessedSec, setGuessedSec] = useState<number>(3);
 
   // Segment index: 0 -> 3s, 1 -> 6s, 2 -> 10s, 3 -> 15s, 4 -> 30s
   const [segmentIndex, setSegmentIndex] = useState<number>(0);
@@ -16,6 +21,7 @@ export function useGameState() {
   const [feedback, setFeedback] = useState<FeedbackState | null>(null);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isVictory, setIsVictory] = useState(false);
+  const [endStatus, setEndStatus] = useState<EndStatus | null>(null);
 
   // Animation transition state
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
@@ -27,7 +33,7 @@ export function useGameState() {
 
   const setPlayMode = useCallback((mode: 'beginning' | 'middle') => {
     setPlayModeState(mode);
-    setSegmentIndex(0); // Reset segment back to 6s (segment 0) on switch
+    setSegmentIndex(0); // Reset segment back to start on switch
   }, []);
 
   const currentSegmentLimit = SEGMENTS[segmentIndex];
@@ -52,6 +58,8 @@ export function useGameState() {
     setCurrentTrack(chosen);
     setPlayedTrackIds((prev) => [...prev, chosen.id]);
     setStage(1);
+    setSolvedStages(0);
+    setGuessedSec(3);
     setSegmentIndex(0);
     setFeedback(null);
     setSelectedChoice(null);
@@ -59,6 +67,7 @@ export function useGameState() {
     setIsTransitioning(false);
     setIsGameOver(false);
     setIsVictory(false);
+    setEndStatus(null);
   }, [selectedGame, playedTrackIds]);
 
   // Initial load
@@ -70,7 +79,7 @@ export function useGameState() {
     setFeedback({ type, message, subMessage });
   };
 
-  // Next segment / Skip segment action (silent, no annoying notification)
+  // Next segment / Skip segment action
   const skipOrAdvanceSegment = useCallback(() => {
     if (segmentIndex < SEGMENTS.length - 1) {
       setSegmentIndex((prev) => prev + 1);
@@ -82,11 +91,24 @@ export function useGameState() {
   const handleWrongChoice = (choiceId: string, expectedHint: string) => {
     setSelectedChoice(choiceId);
     setChoiceStatus('wrong');
+    playSoundEffect('wrong');
+
+    // If already at 30s (last segment) and still wrong -> Auto Game Over "Didn't Guessed"
+    if (segmentIndex >= SEGMENTS.length - 1) {
+      setGuessedSec(SEGMENTS[segmentIndex]);
+      showFeedback('wrong', "Didn't Guessed", `The track was "${currentTrack?.title}".`);
+      setTimeout(() => {
+        setEndStatus('didnt_guessed');
+        setIsGameOver(true);
+        setStage(5);
+        setChoiceStatus('idle');
+        setSelectedChoice(null);
+      }, 800);
+      return;
+    }
 
     // Auto-advance segment if available
-    if (segmentIndex < SEGMENTS.length - 1) {
-      setSegmentIndex((prev) => prev + 1);
-    }
+    setSegmentIndex((prev) => prev + 1);
 
     showFeedback('wrong', 'Incorrect', `Hint: ${expectedHint}`);
 
@@ -100,9 +122,14 @@ export function useGameState() {
   const handleCorrectChoice = (choiceId: string, nextStage: StageId) => {
     setSelectedChoice(choiceId);
     setChoiceStatus('correct');
+    playSoundEffect('correct');
     setFeedback(null);
 
-    // Hold green for 1.5s, then trigger slide out animation
+    // Update how many stages have been correctly solved
+    const newSolved = (nextStage - 1);
+    setSolvedStages(newSolved);
+
+    // Hold green for 1.0s (1 detik), then trigger slide out animation
     setTimeout(() => {
       setIsTransitioning(true);
 
@@ -115,14 +142,16 @@ export function useGameState() {
 
         if (nextStage === 5) {
           setIsVictory(true);
+          setEndStatus('guessed');
+          setGuessedSec(SEGMENTS[segmentIndex]);
           confetti({
             particleCount: 80,
             spread: 60,
             origin: { y: 0.6 }
           });
         }
-      }, 350);
-    }, 1500);
+      }, 300);
+    }, 1000);
   };
 
   // Stage 1: Region Guess
@@ -174,6 +203,8 @@ export function useGameState() {
 
   // Give up action
   const giveUp = () => {
+    setGuessedSec(SEGMENTS[segmentIndex]);
+    setEndStatus('give_up');
     setIsGameOver(true);
     setStage(5);
     showFeedback('wrong', 'Given Up', `The track was "${currentTrack?.title}".`);
@@ -194,6 +225,9 @@ export function useGameState() {
     feedback,
     isGameOver,
     isVictory,
+    endStatus,
+    correctCount: solvedStages,
+    guessedSec,
     selectedChoice,
     choiceStatus,
     isTransitioning,

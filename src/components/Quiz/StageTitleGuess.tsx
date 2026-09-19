@@ -45,18 +45,23 @@ export const StageTitleGuess: React.FC<StageTitleGuessProps> = ({
     });
   }, [track.gameId]);
 
-  // Filter suggestions based on input
+  // Filter suggestions based on input (show initial suggestions if empty on focus)
   const filteredSuggestions = useMemo(() => {
     const query = input.trim().toLowerCase();
-    if (!query) return [];
+    if (!query) {
+      // Show suggestions relevant to this region / game first
+      const sameRegion = allGameTracks.filter((t) => t.regionName.toLowerCase() === getRegionName(track).toLowerCase());
+      const otherTracks = allGameTracks.filter((t) => t.regionName.toLowerCase() !== getRegionName(track).toLowerCase());
+      return [...sameRegion, ...otherTracks].slice(0, 6);
+    }
     return allGameTracks
       .filter((t) =>
         t.title.toLowerCase().includes(query) ||
         t.regionName.toLowerCase().includes(query) ||
         t.displayText.toLowerCase().includes(query)
       )
-      .slice(0, 6);
-  }, [input, allGameTracks]);
+      .slice(0, 8);
+  }, [input, allGameTracks, track]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -79,22 +84,16 @@ export const StageTitleGuess: React.FC<StageTitleGuessProps> = ({
           { label: 'Atmosphere', value: track.tags.join(', ') }
         ];
 
+  // When user clicks a suggestion: Fill the input without auto-submitting
   const handleSelectSuggestion = (suggestion: typeof allGameTracks[0]) => {
-    setInput(suggestion.displayText);
+    setInput(suggestion.title);
     setIsDropdownOpen(false);
     setSelectedIndex(-1);
-    if (choiceStatus === 'idle') {
-      onGuessTitle(suggestion.displayText);
-    }
+    inputRef.current?.focus();
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedIndex >= 0 && filteredSuggestions[selectedIndex]) {
-      handleSelectSuggestion(filteredSuggestions[selectedIndex]);
-      return;
-    }
-
     if (input.trim() && choiceStatus === 'idle') {
       onGuessTitle(input);
       setIsDropdownOpen(false);
@@ -102,16 +101,23 @@ export const StageTitleGuess: React.FC<StageTitleGuessProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!isDropdownOpen || filteredSuggestions.length === 0) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev < filteredSuggestions.length - 1 ? prev + 1 : 0));
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredSuggestions.length - 1));
-    } else if (e.key === 'Escape') {
-      setIsDropdownOpen(false);
+    if (isDropdownOpen && filteredSuggestions.length > 0) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev < filteredSuggestions.length - 1 ? prev + 1 : 0));
+        return;
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredSuggestions.length - 1));
+        return;
+      } else if (e.key === 'Enter' && selectedIndex >= 0) {
+        e.preventDefault();
+        handleSelectSuggestion(filteredSuggestions[selectedIndex]);
+        return;
+      } else if (e.key === 'Escape') {
+        setIsDropdownOpen(false);
+        return;
+      }
     }
   };
 
@@ -141,8 +147,8 @@ export const StageTitleGuess: React.FC<StageTitleGuessProps> = ({
           <input
             ref={inputRef}
             type="text"
-            className="title-input"
-            placeholder="Type track title... (e.g. Her Wishes - Sumeru)"
+            className={`title-input ${choiceStatus === 'correct' ? 'title-input-correct' : ''}`}
+            placeholder="Type or select track title..."
             value={input}
             onChange={(e) => {
               setInput(e.target.value);
@@ -150,7 +156,10 @@ export const StageTitleGuess: React.FC<StageTitleGuessProps> = ({
               setSelectedIndex(-1);
             }}
             onFocus={() => {
-              if (input.trim().length > 0) setIsDropdownOpen(true);
+              setIsDropdownOpen(true);
+            }}
+            onClick={() => {
+              setIsDropdownOpen(true);
             }}
             onKeyDown={handleKeyDown}
             disabled={choiceStatus !== 'idle'}

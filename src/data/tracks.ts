@@ -60,6 +60,27 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
     audioUrl = `${cdnBase}/${audioUrl}`;
   }
 
+  // Determine album cover image URL
+  let rawCover = dict['cover'] || dict['coverimage'] || dict['image'] || '';
+  let coverImage = '';
+  if (rawCover) {
+    if (rawCover.startsWith('http://') || rawCover.startsWith('https://') || rawCover.startsWith('/')) {
+      coverImage = rawCover;
+    } else {
+      coverImage = `${cdnBase}/album_covers/${rawCover}`;
+    }
+  } else if (album && album !== 'HOYO-MiX Album') {
+    // Exact capitalized slug (e.g. "The_Shimmering_Voyage")
+    const cleanAlbumTitle = album
+      .replace(/\s*\(disc\s*\d+\)/gi, '')
+      .replace(/\s*\(vol\s*\d+\)/gi, '')
+      .trim()
+      .replace(/[^a-zA-Z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '');
+
+    coverImage = `${cdnBase}/album_covers/${cleanAlbumTitle}.webp`;
+  }
+
   return {
     id: `track_${folderName}`,
     title,
@@ -67,6 +88,7 @@ export function parseTrackTxt(rawText: string, folderName: string): Track {
     album,
     composer,
     audioUrl,
+    coverImage,
     regionId,
     subAreaId,
     timeContext,
