@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Pause, RotateCcw, FastForward, Flag, Disc, SlidersHorizontal } from 'lucide-react';
+import { Play, Pause, FastForward, Flag, Disc, SlidersHorizontal } from 'lucide-react';
 import { SEGMENTS } from '../../hooks/useGameState';
 
 interface VinylPlayerProps {
@@ -9,7 +9,6 @@ interface VinylPlayerProps {
   playMode: 'beginning' | 'middle';
   onChangePlayMode: (mode: 'beginning' | 'middle') => void;
   onTogglePlay: () => void;
-  onReplay: () => void;
   onSkipSegment: () => void;
   onGiveUp: () => void;
   getFrequencyData: () => Uint8Array;
@@ -22,7 +21,6 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
   playMode,
   onChangePlayMode,
   onTogglePlay,
-  onReplay,
   onSkipSegment,
   onGiveUp,
   getFrequencyData
@@ -35,17 +33,22 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
   const isMaxSegment = segmentIndex === SEGMENTS.length - 1;
 
   useEffect(() => {
-    const updateVisualizer = () => {
-      if (isPlaying) {
-        const freqData = getFrequencyData();
-        const heights = Array.from({ length: 18 }, (_, i) => {
-          const val = freqData[i % freqData.length] || 10;
-          return Math.max(4, (val / 255) * 36);
-        });
-        setBars(heights);
-      } else {
-        setBars(new Array(18).fill(4));
+    if (!isPlaying) {
+      setBars(new Array(18).fill(4));
+      if (animFrameRef.current) {
+        cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = null;
       }
+      return;
+    }
+
+    const updateVisualizer = () => {
+      const freqData = getFrequencyData();
+      const heights = Array.from({ length: 18 }, (_, i) => {
+        const val = freqData[i % freqData.length] || 10;
+        return Math.max(4, (val / 255) * 36);
+      });
+      setBars(heights);
       animFrameRef.current = requestAnimationFrame(updateVisualizer);
     };
 
@@ -54,6 +57,7 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
     return () => {
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
+        animFrameRef.current = null;
       }
     };
   }, [isPlaying, getFrequencyData]);
@@ -63,32 +67,7 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
 
   return (
     <section className="glass-card player-container">
-      {/* Top Row: Playback Position Mode Switcher on the Right */}
-      <div className="player-top-row">
-        <span className="player-section-label">Audio Player</span>
-        <div className="player-mode-switch" role="group" aria-label="Audio start position">
-          <button
-            type="button"
-            className={`mode-switch-btn ${playMode === 'beginning' ? 'active' : ''}`}
-            onClick={() => onChangePlayMode('beginning')}
-            title="Play from start (0:00)"
-          >
-            <Disc size={13} />
-            <span>Start</span>
-          </button>
-          <button
-            type="button"
-            className={`mode-switch-btn ${playMode === 'middle' ? 'active' : ''}`}
-            onClick={() => onChangePlayMode('middle')}
-            title="Play from middle (50%)"
-          >
-            <SlidersHorizontal size={13} />
-            <span>Middle</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Vinyl Disc & Center Button */}
+      {/* Vinyl Disc & Center Play Button */}
       <div className="vinyl-box">
         <div className={`vinyl-disc ${isPlaying ? 'playing' : ''}`}>
           <div className="vinyl-center" />
@@ -99,6 +78,28 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <Pause size={22} /> : <Play size={22} style={{ marginLeft: 3 }} />}
+        </button>
+      </div>
+
+      {/* Start / Middle Mode Switcher placed on the right side */}
+      <div className="player-mode-switch-vertical" role="group" aria-label="Audio start position">
+        <button
+          type="button"
+          className={`mode-switch-btn ${playMode === 'beginning' ? 'active' : ''}`}
+          onClick={() => onChangePlayMode('beginning')}
+          title="Play from start (0:00)"
+        >
+          <Disc size={13} />
+          <span>From the start</span>
+        </button>
+        <button
+          type="button"
+          className={`mode-switch-btn ${playMode === 'middle' ? 'active' : ''}`}
+          onClick={() => onChangePlayMode('middle')}
+          title="Play from middle (50%)"
+        >
+          <SlidersHorizontal size={13} />
+          <span>From the middle</span>
         </button>
       </div>
 
@@ -120,7 +121,7 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
           <span>{currentTime.toFixed(1)}s</span>
           <span className="timer-sub"> / {currentLimit}s</span>
           <span className="timer-mode-tag">
-            {playMode === 'middle' ? '(Middle)' : '(Start)'}
+            {playMode === 'middle' ? '(From the middle)' : '(From the start)'}
           </span>
         </div>
 
@@ -171,17 +172,8 @@ export const VinylPlayer: React.FC<VinylPlayerProps> = ({
         </div>
       </div>
 
-      {/* Action Buttons */}
+      {/* Action Buttons: Skip / Give Up */}
       <div className="player-action-row">
-        <button
-          className="btn-secondary"
-          onClick={onReplay}
-          title={playMode === 'middle' ? 'Replay from middle' : 'Replay from start'}
-        >
-          <RotateCcw size={15} />
-          <span>Replay</span>
-        </button>
-
         {!isMaxSegment ? (
           <button
             className="btn-secondary btn-skip"

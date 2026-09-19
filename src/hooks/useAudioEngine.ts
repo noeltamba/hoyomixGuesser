@@ -161,9 +161,17 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
     }
   }, [playMode, getStartOffset]);
 
+  // Suspend AudioContext to release hardware audio thread and AVCTP/SMTC polling
+  const suspendAudioGraph = useCallback(() => {
+    if (audioCtxRef.current && audioCtxRef.current.state === 'running') {
+      audioCtxRef.current.suspend().catch(() => {});
+    }
+  }, []);
+
   // High-precision frame ticker (requestAnimationFrame) to enforce exact audio limit cutoff
   useEffect(() => {
     let rafId: number;
+    let lastReportedTime = 0;
 
     const checkLimit = () => {
       const audio = audioRef.current;
@@ -171,7 +179,12 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
         const offset = getStartOffset();
         const cur = audio.currentTime;
         const rel = Math.max(0, cur - offset);
-        setCurrentTime(rel);
+        
+        // Only trigger state update when delta is noticeable (>= 0.05s) to prevent spamming renders
+        if (Math.abs(rel - lastReportedTime) >= 0.05) {
+          lastReportedTime = rel;
+          setCurrentTime(rel);
+        }
 
         const limit = unlockedLimitRef.current;
         const maxPos = offset + limit;
@@ -180,6 +193,7 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
           audio.currentTime = maxPos;
           setCurrentTime(limit);
           setIsPlaying(false);
+          suspendAudioGraph();
           return;
         }
         rafId = requestAnimationFrame(checkLimit);
@@ -188,12 +202,14 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
 
     if (isPlaying) {
       rafId = requestAnimationFrame(checkLimit);
+    } else {
+      suspendAudioGraph();
     }
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [isPlaying, getStartOffset]);
+  }, [isPlaying, getStartOffset, suspendAudioGraph]);
 
   const togglePlay = useCallback(async () => {
     const audio = getOrCreateAudio();
@@ -206,6 +222,7 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
     if (!audio.paused) {
       audio.pause();
       setIsPlaying(false);
+      suspendAudioGraph();
     } else {
       try {
         const offset = getStartOffset();
@@ -220,7 +237,7 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
         console.error('Play error:', e);
       }
     }
-  }, [initAudioGraph, getOrCreateAudio, getStartOffset]);
+  }, [initAudioGraph, getOrCreateAudio, getStartOffset, suspendAudioGraph]);
 
   const replay = useCallback(async () => {
     const audio = getOrCreateAudio();
@@ -257,8 +274,9 @@ export function useAudioEngine(unlockedLimit: number, playMode: 'beginning' | 'm
     if (audioRef.current) {
       audioRef.current.pause();
       setIsPlaying(false);
+      suspendAudioGraph();
     }
-  }, []);
+  }, [suspendAudioGraph]);
 
   const getFrequencyData = useCallback(() => {
     if (!analyserRef.current) return new Uint8Array(18);
