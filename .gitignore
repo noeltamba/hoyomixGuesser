@@ -4,6 +4,7 @@ dist-ssr
 .env
 .env*.local
 *.mp3
+!public/sound_effect/*.mp3
 /songs/
 public/area/
 /area/
